@@ -17,13 +17,15 @@ objects = []
 function draw() {
     image(video, 0, 0, 640, 420)
     if (status) {
-
+item=document.getElementById("Object").value
 
 
         objectdetecter.detect(video, gotresult)
 
         for (i = 0; i < objects.length; i++) {
-
+if (item==objects[i].label) {
+    document.getElementById("isfound").innerHTML="item found"
+}
             percent = floor(objects[i].confidence * 100)
             fill("red")
             text(objects[i].label + " " + percent + "%", objects[i].x + 15, objects[i].y + 15)
